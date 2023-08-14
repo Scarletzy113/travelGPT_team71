@@ -21,6 +21,7 @@ db = new sqlite3.Database('./database.db', function (err) {
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
+app.use(express.json());
 
 // Routes to login
 app.get('/', (req, res) => {

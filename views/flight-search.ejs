@@ -31,16 +31,36 @@
 <br>
 
 <body>
-    <div class="center">
-        <div class="btn-group">
-          <form method="GET" action="/flight/search">
-            <button class="leftHomeButton" role="button">Flight + Hotel + Planner</button>
-          </form>
-          <form method="GET" action="/planner">
-            <button class="rightHomeButton" role="button">Planner Only</button>
-          </form>
-        </div>
+    <div class="flightBodyBox">
+        <form method="GET" action="/hotel/search">
+          <button class="hotelFlightButton" role="button">Hotels</button>
+        </form>
+        <br>
+        <br>
+        <form method="POST" action="/flight/result">
+          <div class="grid-container">
+              <div class="item1">
+                <textarea class="textAreaInputTop" id="" type="text" name="" value= '' rows="1" required >From where</textarea>
+              </div>
+              <div class="item2">
+                <textarea class="textAreaInputTop" id="" type="text" name="" value= '' rows="1" required >Destination</textarea>
+              </div>
+              <div class="item3">
+                <input type="submit" class="goButton" value="GO"></button>
+              </div>  
+              <div class="item4">
+                <input class="textAreaInputBottom" id="" type="date" placeholder="Start Date">
+              </div>
+              <div class="item5">
+                <input class="textAreaInputBottom" id="" type="date" placeholder="End Date">
+              </div>
+              <div class="item6">
+                <input class="textAreaInputBottom" id="" type="number" placeholder="Pax">
+              </div>
+          </div>
+        </form>
     </div>
+    
 </body>
 
 </html>

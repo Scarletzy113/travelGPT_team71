@@ -219,7 +219,7 @@ app.post("/hotel/result", requireLogin, (req, res, next) => {
                     const hotel = {
                       name: section.listSingleCardContent.cardTitle.string,
                       rating: section.listSingleCardContent.bubbleRating ? section.listSingleCardContent.bubbleRating.rating : null,
-                      price: section.listSingleCardContent.commerceInfo.priceForDisplay.string,
+                      price: section.listSingleCardContent.commerceInfo?.priceForDisplay?.string || 0,
                       // Add more fields as needed
                     };
                     hotels.push(hotel);

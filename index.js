@@ -113,6 +113,18 @@ app.get('/hotel/search',requireLogin, (req, res) => {
 app.post("/hotel/result", requireLogin, (req, res, next) => {
   const userId = req.session.user.user_id;
   const country = req.body.country;
+  const { format } = require('date-fns');
+
+  // Inside your POST route handler
+  const startDate = req.body.startDate; // Assuming format is dd-mm-yyyy
+  const endDate = req.body.endDate; // Assuming format is dd-mm-yyyy
+  
+  // Convert the dates to the required format (yyyy-mm-dd)
+  const formattedStartDate = format(new Date(startDate), 'yyyy-MM-dd');
+  const formattedEndDate = format(new Date(endDate), 'yyyy-MM-dd');
+
+  
+
 
   // Corrected SQL syntax for updating user's country
   const updateUserSql = "UPDATE users SET country = ? WHERE user_id = ?";
@@ -142,7 +154,7 @@ app.post("/hotel/result", requireLogin, (req, res, next) => {
 
       axios.request(options)
         .then((response) => {
-          console.log(response);
+          
           const geoID = response.data.data.Typeahead_autocomplete.results[3].detailsV2.locationId;
 
           // Corrected SQL syntax for updating user's geoID
@@ -154,7 +166,71 @@ app.post("/hotel/result", requireLogin, (req, res, next) => {
               next(err); // Send the error on to the error handler
             } else {
               console.log(`User's geoId updated for user ID ${userId} with geoId: ${geoID}`);
-              res.redirect('/'); // Render a result page with the extracted geoID
+
+              const options2 = {
+                method: 'POST',
+                url: 'https://travel-advisor.p.rapidapi.com/hotels/v2/list',
+                params: {
+                  currency: 'USD',
+                  units: 'km',
+                  lang: 'en_US'
+                },
+                headers: {
+                  'content-type': 'application/json',
+                  'X-RapidAPI-Key': 'b519162a41msh5b10209e96c5027p107049jsn63c119b6732e',
+                  'X-RapidAPI-Host': 'travel-advisor.p.rapidapi.com'
+                },
+                data: {
+                  geoId: geoID,
+                  checkIn: `${formattedStartDate}`,
+                  checkOut: `${formattedEndDate}`,
+                  sort: 'PRICE_LOW_TO_HIGH',
+                  sortOrder: 'asc',
+                  rooms: [
+                    {
+                        "adults": 2,
+                        "childrenAges": [
+                            2
+                        ]
+                    },
+                    {
+                        "adults": 2,
+                        "childrenAges": [
+                            3
+                        ]
+                    }
+                ],
+                  updateToken: ''
+                }
+              };
+              axios.request(options2)
+              .then((response2) => {
+                // console.log(formattedStartDate);
+                // console.log(formattedEndDate);
+                const sections = response2.data.data.AppPresentation_queryAppListV2[0].sections;
+
+                const hotels = [];
+                            
+                for (const sectionKey in sections) {
+                  const section = sections[sectionKey];
+                  
+                  // Check if the section has a listSingleCardContent object
+                  if (section.listSingleCardContent && typeof section.listSingleCardContent === 'object') {
+                    const hotel = {
+                      name: section.listSingleCardContent.cardTitle.string,
+                      rating: section.listSingleCardContent.bubbleRating ? section.listSingleCardContent.bubbleRating.rating : null,
+                      price: section.listSingleCardContent.commerceInfo.priceForDisplay.string,
+                      // Add more fields as needed
+                    };
+                    hotels.push(hotel);
+                  }
+                }
+
+                console.log(hotels);
+                // Pass the hotels array to your EJS template
+                res.render('hotel-result', { hotels });
+                })
+             
             }
           });
         })
@@ -166,4 +242,6 @@ app.post("/hotel/result", requireLogin, (req, res, next) => {
 });
 
 // ... (Other routes and app.listen)
+
+
 

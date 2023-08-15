@@ -5,3 +5,5 @@ Install npm modules
 - cookie-parser
 - node
 - ejs
+- axios
+- date-fns

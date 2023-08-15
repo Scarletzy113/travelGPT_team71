@@ -272,10 +272,17 @@ hr {
     float: right;
 }
   
+.clearfix {
+    overflow: auto;
+}
+
 .clearfix::after {
     content: "";
     clear: both;
     display: table;
 }
 
+.hotelResultRow {
+    border: 1px solid black;
+}
 

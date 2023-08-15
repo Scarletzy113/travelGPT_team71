@@ -24,6 +24,8 @@
         </div>
       </nav>
     </div>
+
+    
 </head>
 <br>
 <br>
@@ -45,19 +47,32 @@
                 <input type="submit" class="goButton" value="GO"></button>
               </div>  
               <div class="item4">
-                <input class="textAreaInputBottom" id="" type="date" placeholder="Start Date">
+                <input class="textAreaInputBottom" id="startDate" type="date" name="startDate" placeholder="Start Date" required>
               </div>
               <div class="item5">
-                <input class="textAreaInputBottom" id="" type="date" placeholder="End Date">
+                <input class="textAreaInputBottom" id="endDate" type="date" name="endDate" placeholder="End Date" required>
               </div>
               <div class="item6">
-                <input class="textAreaInputBottom" id="" type="number" placeholder="Pax">
+                <input class="textAreaInputBottom" id="adults" type="number" name="adults" placeholder="Pax">
+                <br>
+                <input class="textAreaInputBottom" id="children" type="number" name="children" placeholder="Pax">
+                
               </div>
+              <!-- <div class="item8">
+                <label for="numRooms">Number of Rooms:</label>
+                <input class="textAreaInputBottom" id="numRooms" type="number" name="numRooms" placeholder="Number of Rooms" required>
+              </div>
+              <div id="roomFields">
+                 This is where you'll add fields for each room dynamically using JavaScript --> 
+              <!--</div>  -->
           </div>
         </form>
     </div>
     
+    
+
 </body>
 
 </html>
+
 

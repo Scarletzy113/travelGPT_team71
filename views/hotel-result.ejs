@@ -40,8 +40,16 @@
 
     <div class="flight-prices" id="flightPrices">
         <!-- Flight prices will be populated here using JavaScript -->
+        <% hotels.forEach((hotel) => { %>
+        <div class="hotel-card">
+              <h2><%= hotel.name %></h2>
+              <p>Rating: <%= hotel.rating %></p>
+              <p>Price: <%= hotel.price %></p>
+              
+          </div>
+      <% }); %>
     </div>
 
-    <script src="../routes/script.js"></script>
+    <!-- <script src="../routes/script.js"></script> -->
 </body>
 </html>

@@ -32,7 +32,7 @@
 <br>
 
 <body>
-    <div class="recommendationBodyBox">
+      <div class="recommendationBodyBox">
         <ul class="boxBar">
             <li class="barItems">Destination</li>
             <li class="barItems" style="float:right">
@@ -47,61 +47,20 @@
         <div class="container">
             <div class="row row-cols-3">
                 <!-- DONT NEED THESE 6 ITEMS, JUST NEED 1. ADD THE API SO THAT EACH ITEM IS TAGGED AS 1 col CLASS -->
+                <% recommendations.forEach((recommendation) => { %>
                 <div class="col">
                     <p class="fs-6">
                         <div class="clearfix">
-                            <img class="img1" src="insert img api here" alt="insert img api link">
+                            <img class="img1" src= '<%=recommendation.image%>'  alt="insert img api link">
                         </div>
                         <!-- ADD API DETAILS HERE -->
-                        attraction detail 1
+                        <%= recommendation.name %>
+                        Rating: <%= recommendation.rating %>
+                        Price: <%= recommendation.price %>
+                        
                     </p>
                 </div>
-                <div class="col">
-                    <p class="fs-6">
-                        <div class="clearfix">
-                            <img class="img1" src="insert img api here" alt="insert img api link">
-                        </div>
-                        <!-- ADD API DETAILS HERE -->
-                        attraction detail 2
-                    </p>
-                </div>
-                <div class="col">
-                    <p class="fs-6">
-                        <div class="clearfix">
-                            <img class="img1" src="insert img api here" alt="insert img api link">
-                        </div>
-                        <!-- ADD API DETAILS HERE -->
-                        attraction detail 3
-                    </p>
-                </div>
-                <div class="col">
-                    <p class="fs-6">
-                        <div class="clearfix">
-                            <img class="img1" src="insert img api here" alt="insert img api link">
-                        </div>
-                        <!-- ADD API DETAILS HERE -->
-                        attraction detail 4
-                    </p>
-                </div>
-                <div class="col">
-                    <p class="fs-6">
-                        <div class="clearfix">
-                            <img class="img1" src="insert img api here" alt="insert img api link">
-                        </div>
-                        <!-- ADD API DETAILS HERE -->
-                        attraction detail 5
-                    </p>
-                </div>
-                <div class="col">
-                    <p class="fs-6">
-                        <div class="clearfix">
-                            <img class="img1" src="insert img api here" alt="insert img api link">
-                        </div>
-                        <!-- ADD API DETAILS HERE -->
-                        attraction detail 6
-                    </p>
-                </div>
-            </div>
+                <% }); %>
         </div>
     </div>
 </body>

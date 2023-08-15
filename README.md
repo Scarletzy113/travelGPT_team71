@@ -7,3 +7,5 @@ Install npm modules
 - ejs
 - axios
 - date-fns
+
+test with singapore and hong kong

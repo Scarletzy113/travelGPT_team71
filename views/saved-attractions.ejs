@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- ... (head and navigation bar) ... -->
+<body>
+  <div class="container">
+    <h2>Saved Attractions</h2>
+    <ul>
+      <% savedAttractions.forEach((attraction) => { %>
+        <li><%= attraction.attraction_name %></li>
+        <div class="clearfix">
+          <img class="img1" src= '<%=attraction.imageURL%>'  alt="insert img api link">
+        </div>
+        Rating: <%= attraction.rating %>
+        Price: <%= attraction.price %>
+      <% }) %>
+    </ul>
+  </div>
+</body>
+</html> 
+
+

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- ... (head and navigation bar) ... -->
+<body>
+  <div class="container">
+    <h2>Saved Hotels</h2>
+    <ul>
+      <% savedHotels.forEach((hotel) => { %>
+        <li><%= hotel.hotel_name %></li>
+        <p>Rating: <%= hotel.rating %></p>
+        <p>Price: <%= hotel.price %></p>
+      <% }) %>
+    </ul>
+  </div>
+</body>
+</html>

@@ -99,6 +99,104 @@ function requireLogin(req, res, next) {
   }
 }
 
+
+///////////////////////saved info on attraction////////
+app.get('/saved-attractions', requireLogin, (req, res) => {
+  const userId = req.session.user.user_id;
+
+  // Query the database to retrieve saved attractions for the user
+  const selectSql = 'SELECT * FROM attractionDetails WHERE user_id = ?';
+  db.all(selectSql, [userId], (err, rows) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('Could not retrieve saved attractions.');
+    } else {
+
+              // Pass the retrieved data to the saved-attractions EJS template
+      res.render('saved-attractions',
+       {
+        savedAttractions: rows,
+       });
+    }
+  
+  });
+});
+
+//////////////save-attraction////////////////////
+app.post('/save-attraction', requireLogin, (req, res) => {
+  const userId = req.session.user.user_id;
+  
+  const attractionName = req.body.attractionName;
+  const attractionRating = req.body.attractionRating;
+  const attractionPrice = req.body.attractionPrice;
+  const attractionImageUrl = req.body.attractionImageURL;
+
+  console.log('Attempting to save attraction:', userId,attractionName,attractionRating,attractionPrice,attractionImageUrl);
+  // console.log('Attraction ID:', attractionId);
+
+  // Insert the saved attraction into the user-saved data table in the database
+  const insertSql = 'INSERT INTO attractionDetails (user_id,attraction_name,rating,price,imageURL ) VALUES (?, ? , ? , ? , ?)';
+  db.run(insertSql, [userId, attractionName,attractionRating,attractionPrice,attractionImageUrl], (err) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('Could not save attraction.');
+    } else {
+      console.log(`Attraction saved for user ID ${userId}:${attractionName}:${attractionRating}:${attractionPrice}:${attractionImageUrl}`);
+      
+    }
+  });
+});
+
+
+
+
+
+
+////////////////////////saved info on attraction////////
+app.get('/saved-hotel', requireLogin, (req, res) => {
+  const userId = req.session.user.user_id;
+
+  // Query the database to retrieve saved attractions for the user
+  const selectSql = 'SELECT * FROM hotelDetails WHERE user_id = ?';
+  db.all(selectSql, [userId], (err, rows) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('Could not retrieve saved hotels.');
+    } else {
+
+              // Pass the retrieved data to the saved-attractions EJS template
+      res.render('saved-hotel',
+       {
+        savedHotels: rows,
+       });
+    }
+  
+  });
+});
+//////////////save-hotel////////////////////
+app.post('/save-hotel', requireLogin, (req, res) => {
+  const userId = req.session.user.user_id;
+  
+  const hotelName = req.body.hotelName;
+  const hotelRating = req.body.hotelRating;
+  const hotelPrice = req.body.hotelPrice;
+
+  console.log('Attempting to save hotel:', userId,hotelName,hotelRating,hotelPrice);
+
+  // Insert the saved attraction into the user-saved data table in the database
+  const insertSql = 'INSERT INTO hotelDetails (user_id,hotel_name,rating,price) VALUES (?, ?, ?, ?)';
+  db.run(insertSql, [userId, hotelName,hotelRating,hotelPrice], (err) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('Could not save hotel.');
+    } else {
+      console.log(`Hotel saved for user ID ${userId}:${hotelName}:${hotelRating}:${hotelPrice}`);
+      
+    }
+  });
+});
+
+
 //Route to flight/hotels page
 app.get('/flight/search',requireLogin, (req, res) => {
   res.render('flight-search');

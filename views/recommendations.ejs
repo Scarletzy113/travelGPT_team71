@@ -57,6 +57,14 @@
                         <%= recommendation.name %>
                         Rating: <%= recommendation.rating %>
                         Price: <%= recommendation.price %>
+                        <!-- save button-->
+                        <form action="/save-attraction" method="POST">
+                          <input type="hidden" name="attractionName" value="<%= recommendation.name %>">
+                          <input type="hidden" name="attractionRating" value="<%= recommendation.rating %>">
+                          <input type="hidden" name="attractionPrice" value ="<%= recommendation.price%>">
+                          <input type="hidden" name="attractionImageURL" value ="<%= recommendation.image%>">
+                          <button type="submit" class="btn btn-primary">Save</button>
+                        </form>
                         
                     </p>
                 </div>

@@ -19,9 +19,11 @@ CREATE TABLE IF NOT EXISTS users (
 CREATE TABLE IF NOT EXISTS hotelDetails (
   hotel_id INTEGER PRIMARY KEY AUTOINCREMENT,
   hotel_name TEXT NOT NULL,
-  number_of_days INT NOT NULL,
+  number_of_days INT,
   number_of_adults INT,
   number_of_children INT,
+  rating INT NOT NULL,
+  price INT NOT NULL,
   user_id INT,
   FOREIGN KEY (user_id) REFERENCES users(user_id)
 );

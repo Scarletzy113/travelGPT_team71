@@ -31,10 +31,14 @@ CREATE TABLE IF NOT EXISTS hotelDetails (
 CREATE TABLE IF NOT EXISTS attractionDetails (
   attraction_id INTEGER PRIMARY KEY AUTOINCREMENT,
   attraction_name TEXT NOT NULL,
-  day_of_stay INT NOT NULL,
+  day_of_stay INT,
+  rating INT NOT NULL,
+  price INT NOT NULL,
+  imageURL TEXT NOT NULL,
   user_id INT,
+
   FOREIGN KEY (user_id) REFERENCES users(user_id)
-);
+);  
   
 
 COMMIT;

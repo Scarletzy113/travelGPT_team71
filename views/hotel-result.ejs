@@ -46,6 +46,12 @@
                 <h2><%= hotel.name %></h2>
                 <p>Rating: <%= hotel.rating %></p>
                 <p>Price: <%= hotel.price %></p>
+                <form action="/save-hotel" method="POST">
+                  <input type="hidden" name="hotelName" value="<%= hotel.name %>">
+                  <input type="hidden" name="hotelRating" value="<%= hotel.rating %>">
+                  <input type="hidden" name="hotelPrice" value ="<%= hotel.price%>">
+                  <button type="submit" class="btn btn-primary">Save</button>
+                </form> 
             </div>
           </div>
         <% }); %>

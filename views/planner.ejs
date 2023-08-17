@@ -25,6 +25,14 @@
         </div>
       </nav>
     </div>
+    <script>
+        function updateMaxDays() {
+            const newMaxDays = parseInt(document.getElementById('maxDaysInput').value);
+            if (!isNaN(newMaxDays) && newMaxDays > 0) {
+                window.location.href = `/planner?maxDays=${newMaxDays}`;
+            }
+        }
+    </script>
 </head>
 
 <br>
@@ -32,77 +40,28 @@
 <br>
 
 <body>
+    <div class="container">
+        <label for="maxDaysInput">Set Maximum Days: </label>
+        <input type="number" id="maxDaysInput" min="1" value="<%= maxDays %>">
+        <button onclick="updateMaxDays()">Update</button>
+    </div>
     <div class="recommendationBodyBox">
-        <ul class="boxBar">
-            <li class="barItems">
-                Day 1
-            </li>
-            <li class="barItems" style="float:right">
-                <input class="textAreaInputBottom" id="" type="number" placeholder="No. of Days:">
-            </li>
-        </ul>
-        <hr></hr>
-        <div class="container">
-            <div class="row row-cols-4">
-                <!-- DONT NEED THESE 6 ITEMS, JUST NEED 1. ADD THE API SO THAT EACH ITEM IS TAGGED AS 1 col CLASS -->
-                <div class="col">
-                    <p class="fs-6">
-                        <div class="clearfix">
-                            <img class="img1" src="insert img api here" alt="insert img api link">
-                        </div>
-                        <!-- ADD API DETAILS HERE -->
-                        attraction detail 1
-                    </p>
-                </div>
-                <div class="col">
-                    <p class="fs-6">
-                        <div class="clearfix">
-                            <img class="img1" src="insert img api here" alt="insert img api link">
-                        </div>
-                        <!-- ADD API DETAILS HERE -->
-                        attraction detail 2
-                    </p>
-                </div>
-                <div class="col">
-                    <p class="fs-6">
-                        <div class="clearfix">
-                            <img class="img1" src="insert img api here" alt="insert img api link">
-                        </div>
-                        <!-- ADD API DETAILS HERE -->
-                        attraction detail 3
-                    </p>
-                </div>
-                <div class="col">
-                    <p class="fs-6">
-                        <div class="clearfix">
-                            <img class="img1" src="insert img api here" alt="insert img api link">
-                        </div>
-                        <!-- ADD API DETAILS HERE -->
-                        attraction detail 4
-                    </p>
-                </div>
-                <div class="col">
-                    <p class="fs-6">
-                        <div class="clearfix">
-                            <img class="img1" src="insert img api here" alt="insert img api link">
-                        </div>
-                        <!-- ADD API DETAILS HERE -->
-                        attraction detail 5
-                    </p>
-                </div>
-                <div class="col">
-                    <p class="fs-6">
-                        <div class="clearfix">
-                            <img class="img1" src="insert img api here" alt="insert img api link">
-                        </div>
-                        <!-- ADD API DETAILS HERE -->
-                        attraction detail 6
-                    </p>
-                </div>
+        <% for (const [day, attractions] of Object.entries(attractionsByDay)) { %>
+            <div class="day-card">
+                <h2>Day <%= day %></h2>
+                <ul>
+                    <% for (const attraction of attractions) { %>
+                    <li>
+                        <img src="<%= attraction.imageURL %>" alt="Attraction Image">
+                        <p><%= attraction.attraction_name %></p>
+                        <p>Rating: <%= attraction.rating %></p>
+                        <p>Price: $<%= attraction.price %></p>
+                    </li>
+                    <% } %>
+                </ul>
             </div>
-        </div>
+        <% } %>
     </div>
 </body>
 
 </html>
-

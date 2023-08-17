@@ -1,30 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- ... (head and navigation bar) ... -->
-<body>
-  <div class="container">
-    <h2>Saved Attractions</h2>
-    <ul>
-      <% savedAttractions.forEach((attraction) => { %>
-        <li><%= attraction.attraction_name %></li>
-        <form action="/allocate" method="POST">
-          <input type="hidden" name="attraction_id" value="<%= attraction.attraction_id %>">
-          <label for="daySelect">Allocate to Day:</label>
-          <select name="daySelect" id="daySelect">
-            <% for (let i = 1; i <= maxDays; i++) { %>
-              <option value="<%= i %>">Day <%= i %></option>
-            <% } %>
-          </select>
-          <button type="submit">Allocate</button>
-        </form>
-        <div class="clearfix">
-          <img class="img1" src= '<%=attraction.imageURL%>'  alt="insert img api link">
+    <meta name="viewport" charset="utf-8" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/project_main.css" type="text/css"/>
+    
+<head>
+    <div style="background-color:black">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-body" data-bs-theme="dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">
+            <div class="logo">TravelGPT</div>
+          </a>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="/login">Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/signup">Sign up</a>
+              </li>
+            </ul>
+          </div>
         </div>
-        Rating: <%= attraction.rating %>
-        Price: <%= attraction.price %>
+      </nav>
+    </div>
+</head>
+<body>
+  <a class="go-planner-button" href="/planner">Go to planner</a>
+  <div class="savedBodyBox">
+    <h2 style="text-align:center">Saved Attractions</h2>
+    <div class="containerAttractBox">
+      <% savedAttractions.forEach((attraction) => { %>
+        <div>
+          <div class="clearfixAttract">
+            <img class="img1" src= '<%=attraction.imageURL%>'  alt="insert img api link">
+          </div>
+          <%= attraction.attraction_name %>
+          <form action="/allocate" method="POST">
+            <input type="hidden" name="attraction_id" value="<%= attraction.attraction_id %>">
+            <label for="daySelect">Allocate to Day:</label>
+            <select name="daySelect" id="daySelect">
+              <% for (let i = 1; i <= maxDays; i++) { %>
+                <option value="<%= i %>">Day <%= i %></option>
+              <% } %>
+            </select>
+            <button type="submit" style="background-color:grey;color:white">Allocate</button>
+          </form>
+          
+          Rating: <%= attraction.rating %> / 5
+          Price: <%= attraction.price %>
+        </div>
       <% }) %>
-    </ul>
+    </div>
   </div>
+
 </body>
 </html> 
 

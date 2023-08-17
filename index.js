@@ -100,10 +100,12 @@ function requireLogin(req, res, next) {
 }
 
 
+var maxDays = 3;
+
 ///////////////////////saved info on attraction////////
 app.get('/saved-attractions', requireLogin, (req, res) => {
   const userId = req.session.user.user_id;
-
+  
   // Query the database to retrieve saved attractions for the user
   const selectSql = 'SELECT * FROM attractionDetails WHERE user_id = ?';
   db.all(selectSql, [userId], (err, rows) => {
@@ -116,12 +118,12 @@ app.get('/saved-attractions', requireLogin, (req, res) => {
       res.render('saved-attractions',
        {
         savedAttractions: rows,
+        maxDays: maxDays,
        });
     }
   
   });
 });
-
 //////////////save-attraction////////////////////
 app.post('/save-attraction', requireLogin, (req, res) => {
   const userId = req.session.user.user_id;
@@ -474,4 +476,66 @@ app.post("/recommendations/result", requireLogin, (req, res, next) => {
 });
 
 
+app.get('/planner', (req, res) => {
+  const query = `
+      SELECT * FROM attractionDetails
+      ORDER BY day_of_stay, attraction_id
+  `;
+
+  db.all(query, [], (err, rows) => {
+      if (err) {
+          console.error(err);
+          res.status(500).send('Internal Server Error');
+          return;
+      }
+
+       // Initial value or any default value
+      if (req.query.maxDays) {
+          maxDays = parseInt(req.query.maxDays);
+          if (isNaN(maxDays) || maxDays <= 0) {
+              maxDays = 3; // Reset to default if invalid input
+          }
+      }
+
+      const attractionsByDay = {};
+      rows.forEach(attraction => {
+          const day = attraction.day_of_stay;
+          if (day !== null) {
+              if (!attractionsByDay[day]) {
+                  attractionsByDay[day] = [];
+              }
+              attractionsByDay[day].push(attraction);
+          }
+      });
+
+      res.render('planner.ejs', {
+          attractionsByDay: attractionsByDay,
+          maxDays: maxDays,
+      });
+  });
+});
+
+
+app.post('/allocate', (req, res) => {
+  const attractionId = req.body.attraction_id;
+  const selectedDay = req.body.daySelect;
+
+  // Update the database with the selected day_of_stay for the attraction
+  const updateQuery = `
+      UPDATE attractionDetails
+      SET day_of_stay = ?
+      WHERE attraction_id = ?
+  `;
+
+  db.run(updateQuery, [selectedDay, attractionId], (err) => {
+      if (err) {
+          console.error(err);
+          res.status(500).send('Internal Server Error');
+          return;
+      }
+
+      // Redirect back to the attractions page after allocation
+      res.redirect('/saved-attractions');
+  });
+});
 

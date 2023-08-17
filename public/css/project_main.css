@@ -3,33 +3,39 @@
 
 .center {
     text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
 .leftHomeButton {
     border-top-left-radius: 50%;
     border-bottom-left-radius: 50%;
-    height: 150%;
+    font-family: "Caveat", sans-serif;
+    font-size: 3vw;
+    height: 50vh;
 }
 
 .rightHomeButton {
     border-top-right-radius: 50%;
     border-bottom-right-radius: 50%;
-    height: 150%;
+    font-family:  "Caveat", sans-serif;
+    font-size: 3vw;
+    height: 50vh;
 }
 
 .btn-group {
-    width: 600px;
     height: 50%;
 }
 
 .btn-group button {
     padding: 12px 20px;
-    background-color: lightblue;
+    background-color: rgb(15, 14, 14);
     border: 1px solid black;
-    color: black;
+    color: white;
     text-align: center;
-    width: 300px;
-    height: 200px;
+    width: 500px;
+    height: 400px;
+    opacity: 0.8;
     
 }
   
@@ -44,7 +50,38 @@
 }
 
 .btn-group button:hover {
-    background-color: darkcyan;
+    background-color: black;
+}
+
+.home-body {
+    background-image: url('img/halong-bay.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-nav {
+    display: flex;
+    align-items: center; 
+}
+
+.navbar-nav li {
+    margin: 0 10px;
+}
+
+#goButton {
+    color:black;
+    background-color: white;
+}
+
+#goButton:hover {
+    background-color: rgb(196, 196, 196);
 }
 
 

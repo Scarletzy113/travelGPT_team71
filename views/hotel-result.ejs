@@ -8,7 +8,7 @@
     <div style="background-color:black">
         <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-body" data-bs-theme="dark">
           <div class="container-fluid">
-            <a class="navbar-brand">
+            <a class="navbar-brand" href="/">
               <div class="logo">TravelGPT</div>
             </a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -36,6 +36,7 @@
         <input id="endDate" type="date" placeholder="End Date">
         <input id="pax" type="number" placeholder="Pax">
         <button class="go-button" id="goButton">GO!</button>
+        <a class="go-hotel-button" href="/saved-hotel">Saved List</a>
     </div>
     <div class="center" style="width:80%;margin:auto">
       <div class="flight-prices" id="flightPrices">
@@ -44,7 +45,7 @@
           <div class="hotel-card">
             <div class="hotelResultRow">
                 <h2><%= hotel.name %></h2>
-                <p>Rating: <%= hotel.rating %></p>
+                <p>Rating: <%= hotel.rating %> / 5</p>
                 <p>Price: <%= hotel.price %></p>
                 <form action="/save-hotel" method="POST">
                   <input type="hidden" name="hotelName" value="<%= hotel.name %>">

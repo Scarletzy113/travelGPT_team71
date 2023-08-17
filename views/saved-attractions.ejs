@@ -7,6 +7,16 @@
     <ul>
       <% savedAttractions.forEach((attraction) => { %>
         <li><%= attraction.attraction_name %></li>
+        <form action="/allocate" method="POST">
+          <input type="hidden" name="attraction_id" value="<%= attraction.attraction_id %>">
+          <label for="daySelect">Allocate to Day:</label>
+          <select name="daySelect" id="daySelect">
+            <% for (let i = 1; i <= maxDays; i++) { %>
+              <option value="<%= i %>">Day <%= i %></option>
+            <% } %>
+          </select>
+          <button type="submit">Allocate</button>
+        </form>
         <div class="clearfix">
           <img class="img1" src= '<%=attraction.imageURL%>'  alt="insert img api link">
         </div>
@@ -17,5 +27,4 @@
   </div>
 </body>
 </html> 
-
 

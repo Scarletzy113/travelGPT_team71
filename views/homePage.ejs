@@ -1,51 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
     <meta name="viewport" charset="utf-8" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/project_main.css" type="text/css"/>
-    
-<head>
-    <div style="background-color:black">
-      <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-body" data-bs-theme="dark">
-        <div class="container-fluid">
-          <a class="navbar-brand">
-            <div class="logo">TravelGPT</div>
-          </a>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" href="/login">Login</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/signup">Sign up</a>
-              </li>
-            </ul>
-          </div>
+    <link rel="stylesheet" href="/css/project_main.css" type="text/css"/> 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Caveat">
+  </head> 
+<body div class="home-body">
+  <div style="background-color:black">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-body" data-bs-theme="dark">
+      <div class="container-fluid">
+        <a class="navbar-brand">
+          <div class="logo">TravelGPT</div>
+        </a>
+        <div class="ml-auto" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li>
+              <form method ="get" action="/recommendations/search">
+                <button class="go-button" id="goButton"> Recommendations</button>
+              </form>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/login">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/signup">Sign up</a>
+            </li>
+          </ul>
         </div>
-      </nav>
-    </div>
-</head>
+      </div>
+    </nav>
+  </div>
 <br>
 <br>
 <br>
-
-<body>
     <div class="center">
         <div class="btn-group">
           <form method="GET" action="/flight/search">
-            <button class="leftHomeButton" role="button">Flight + Hotel + Planner</button>
+            <button class="leftHomeButton" role="button">Access to Flights and Hotels</button>
           </form>
           <form method="GET" action="/planner">
-            <button class="rightHomeButton" role="button">Planner Only</button>
+            <button class="rightHomeButton" role="button">Access to Travel Planner</button>
           </form>
         </div>
     </div>
 </body>
-
-<form method ="get" action="/recommendations/search">
-  <button class="go-button" id="goButton"> Recommendations</button>
-</form>
-
 </html>
+
 

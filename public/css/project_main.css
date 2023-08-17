@@ -136,7 +136,8 @@
 
 .grid-container {
     display: grid;
-    grid-template-columns: auto auto auto auto auto auto auto;
+    grid-template-columns: auto auto auto auto auto auto auto auto auto;
+    grid-template-rows: 80px 20px 80px;
     gap: 10px;
     background-color: lightgrey;
     padding: 10px;
@@ -145,7 +146,6 @@
 .grid-container > div {
     background-color: lightgrey;
     text-align: center;
-    padding: 20px 0;
     font-size: 30px;
 }
 
@@ -163,34 +163,62 @@
 
 /* Go button */
 .item3 {
-    grid-column: 7;
-    grid-row: 1 / span 2;
+    grid-column: 9;
+    grid-row: 1 / span 3;
 }
 
 /* Start date input */
 .item4 {
     grid-column: 1 / 3;
-    grid-row: 2;
+    grid-row: 3;
 }
 
 /* End date input */
 .item5 {
     grid-column: 3 / 5;
-    grid-row: 2;
+    grid-row: 3;
 }
 
 /* Pax input */
 .item6 {
     grid-column: 5 / 7;
-    grid-row: 2;
+    grid-row: 3;
 }
 
 /* Country of stay input */
 .item7 {
-    grid-column: 1 / 7;
+    grid-column: 1 / 9;
     grid-row: 1;
 }
 
+.item8 {
+    grid-column: 7 / 9;
+    grid-row: 3;
+}
+
+.item9 {
+    grid-column: 1 / 3;
+    grid-row: 2;
+}
+
+.item10 {
+    grid-column: 3 / 5;
+    grid-row: 2;
+}
+
+.item11 {
+    grid-column: 5 / 7;
+    grid-row: 2;
+}
+
+.item12 {
+    grid-column: 7 / 9;
+    grid-row: 2;
+}
+
+.inputPrompt {
+    font-size: 15px;
+}
 /* GO button */
 .goButton {
   height: 100%;
@@ -321,5 +349,110 @@ hr {
 
 .hotelResultRow {
     border: 1px solid black;
+}
+
+
+
+/********************************************* SAVED ATTRACTIONS & HOTEL PAGE PROPERTIES *******************************************/
+.savedBodyBox {
+    background-color: white;
+    border: 3px solid grey;
+    padding: 10px;
+    width: 80%;
+    margin: auto;
+}
+
+.containerHotelBox {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 30px;
+    background-color: white;
+    padding: 10px;
+}
+
+.containerHotelBox > div {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid black;
+    text-align: center;
+    font-size: 25px;
+    height: 180px;
+    border-radius: 20px;
+}
+
+.go-hotel-button {
+    background-color: #823b17;
+    color: white;
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 10px;
+    height: 44px;
+    padding: 10px;
+}
+
+.containerAttractBox {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 30px;
+    background-color: white;
+    padding: 10px;
+}
+
+.containerAttractBox > div {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid black;
+    text-align: center;
+    font-size: 25px;
+    height: auto;
+    border-radius: 20px;
+}
+
+.clearfixAttract {
+    overflow: auto;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.clearfixAttract::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.go-planner-button {
+    background-color: #823b17;
+    color: white;
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 10px;
+    height: 44px;
+    padding: 10px;
+    position: absolute;
+}
+
+.planner-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 10px;
+    background-color: white;
+    padding: 10px;
+}
+
+.planner-container > div {
+    background-color: white;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 30px;
+}
+
+.go-recommendation-button {
+    background-color: #823b17;
+    color: white;
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 10px;
+    height: 44px;
+    padding: 10px;
+    position: absolute;
 }
 

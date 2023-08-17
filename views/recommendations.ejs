@@ -33,16 +33,24 @@
   
       <div class="recommendationBodyBox">
         <ul class="boxBar">
-            <li class="barItems">Destination</li>
-            <li class="barItems" style="float:right;margin:5px">
-              <a class="go-hotel-button" href="/saved-attractions">Saved List</a>
-            </li>
-            <li class="barItems" style="float:right">
-                <div class="barDays">No. of Days:</div>
-            </li>
-            <li class="barItems" style="float:right">
-                <button class="barButton">Search</button>
-            </li>
+          <li class="barItems">
+            <form method="POST" action="/recommendations/result">
+              <div class="search-bar">
+                
+                  <input style="border:1px solid black" id="country" type="text" name="country" placeholder="Destination" required>
+                  <input style="border:1px solid black" id="startDate" type="date" name="startDate" placeholder="Start Date" required>
+                  <input style="border:1px solid black" id="endDate" type="date" name="endDate" placeholder="End Date" required>
+                  <input style="border:1px solid black" id="pax" type="number" name="pax" placeholder="Pax">
+                  <button style="border:1px solid black;background-color:grey" class="go-button" id="goButton" type="submit">Search</button>
+              </div>
+            </form>
+          </li>
+          <li class="barItems" style="float:right;margin:5px">
+            <a class="go-hotel-button" href="/saved-attractions">Saved List</a>
+          </li>
+          <li class="barItems" style="float:right">
+              <div class="barDays">No. of Days:</div>
+          </li>
             
             
         </ul>

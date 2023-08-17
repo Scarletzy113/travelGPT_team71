@@ -8,7 +8,7 @@
     <div style="background-color:black">
       <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-body" data-bs-theme="dark">
         <div class="container-fluid">
-          <a class="navbar-brand">
+          <a class="navbar-brand" href="/">
             <div class="logo">TravelGPT</div>
           </a>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -53,18 +53,23 @@
                 <input class="textAreaInputBottom" id="endDate" type="date" name="endDate" placeholder="End Date" required>
               </div>
               <div class="item6">
-                <input class="textAreaInputBottom" id="adults" type="number" name="adults" placeholder="Pax">
-                <br>
-                <input class="textAreaInputBottom" id="children" type="number" name="children" placeholder="Pax">
-                
+                <input class="textAreaInputBottom" id="adults" type="number" name="adults" placeholder="Adult Pax">
               </div>
-              <!-- <div class="item8">
-                <label for="numRooms">Number of Rooms:</label>
-                <input class="textAreaInputBottom" id="numRooms" type="number" name="numRooms" placeholder="Number of Rooms" required>
+              <div class="item8">
+                <input class="textAreaInputBottom" id="children" type="number" name="children" placeholder="Children Pax">
               </div>
-              <div id="roomFields">
-                 This is where you'll add fields for each room dynamically using JavaScript --> 
-              <!--</div>  -->
+              <div class="item9">
+                <p class="inputPrompt">Start Date:</p>
+              </div>
+              <div class="item10">
+                <p class="inputPrompt">End Date:</p>
+              </div>
+              <div class="item11">
+                <p class="inputPrompt">Number of Adults:</p>
+              </div>
+              <div class="item12">
+                <p class="inputPrompt">Number of Children:</p>
+              </div>
           </div>
         </form>
     </div>

@@ -82,8 +82,8 @@ app.post('/signup', (req, res) => {
   db.run(sql, [username, email, password], (err) => {
     if (err) {
       console.error(err);
-      res.status(500).send('Could not register user.');
-    } else {
+      res.status(401).send('<script>alert("You have entered a used Username or Email."); window.location.href = "/signup";</script>');
+  } else {
       res.redirect('/');
     }
   });

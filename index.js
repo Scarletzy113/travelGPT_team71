@@ -3,6 +3,10 @@ const sqlite3 = require('sqlite3').verbose();
 const bodyParser = require('body-parser');
 const axios = require('axios');
 const session = require('express-session');
+const Amadeus =require( "amadeus");
+
+
+
 
 
 const app = express();
@@ -199,9 +203,114 @@ app.post('/save-hotel', requireLogin, (req, res) => {
 });
 
 
-//Route to flight/hotels page
-app.get('/flight/search',requireLogin, (req, res) => {
+const amadeus = new Amadeus({
+  clientId: 'WGrGoO7avNljRfzckUNoAYoJWluTUjHm',
+  clientSecret: 'oqhWp4htORBWGGGx',
+});
+// Your Express app setup and other code...
+
+app.get('/flight/search', requireLogin, (req, res) => {
   res.render('flight-search');
+});
+app.get("/api/autocomplete", async (request, response) => {
+  try {
+    const { query } = request;
+    const { data } = await amadeus.referenceData.locations.get({
+      keyword: query.keyword,
+      subType: Amadeus.location.city,
+    });
+    response.json(data);
+  } catch (error) {
+    console.error(error.response);
+    response.json([]);
+  }
+});
+app.get("/api/search", async (request, response) => {
+  try {
+    const { query } = request;
+    console.log(query);
+    const { data } = await amadeus.shopping.flightOffersSearch.get({
+      originLocationCode: query.origin,
+      destinationLocationCode: query.destination,
+      departureDate: query.departureDate,
+      adults: query.adults,
+      children: query.children,
+      infants: query.infants,
+      travelClass: query.travelClass,
+      ...(query.returnDate ? { returnDate: query.returnDate } : {}),
+    });
+    response.json(data);
+  } catch (error) {
+    console.error(error.response);
+    response.json([]);
+  }
+});
+
+
+app.post('/api/save-flight', (req, res) => {
+  const { flightData } = req.body;
+
+  if (!flightData) {
+    return res.status(400).json({ message: 'Flight data is missing' });
+  }
+
+  // Extract relevant details from flightData
+  const flightDetailsToSave = flightData.map((itinerary) => {
+    const segments = itinerary.segments.map((segment) => {
+      return `${segment.departure.iataCode} → ${segment.arrival.iataCode}`;
+    }).join(', ');
+
+    return {
+      origin: itinerary.segments[0].departure.iataCode,
+      destination: itinerary.segments[itinerary.segments.length - 1].arrival.iataCode,
+      duration: itinerary.duration,
+      price: itinerary.price,
+      travelPath: segments,
+    };
+  });
+
+  // Insert flight details into the database
+  flightDetailsToSave.forEach(async (flightDetail) => {
+    const { origin, destination, duration, price, travelPath } = flightDetail;
+    const sql = `
+      INSERT INTO flightDetails (origin, destination, duration, price, travel_path, user_id)
+      VALUES (?, ?, ?, ?, ?, ?)
+    `;
+    // Assuming user_id is available in the session
+    const user_id = req.session.user.user_id;
+
+    try {
+      await db.run(sql, [origin, destination, duration, price, travelPath, user_id]);
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ message: 'Failed to save flight details' });
+    }
+  });
+
+  res.json({ message: 'Flight details saved successfully' });
+});
+
+
+///////////////////////saved info on attraction////////
+app.get('/saved-flights', requireLogin, (req, res) => {
+  const userId = req.session.user.user_id;
+  
+  // Query the database to retrieve saved attractions for the user
+  const selectSql = 'SELECT * FROM flightDetails WHERE user_id = ?';
+  db.all(selectSql, [userId], (err, rows) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('Could not retrieve saved attractions.');
+    } else {
+
+              // Pass the retrieved data to the saved-attractions EJS template
+      res.render('saved-flights',
+       {
+        savedFlights: rows
+       });
+    }
+  
+  });
 });
 
 

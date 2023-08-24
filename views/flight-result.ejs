@@ -28,19 +28,23 @@
 </head>
 <body>
 
-    <div class="search-bar">
-        <input id="origin" type="text" placeholder="Country of Origin">
-        <input id="destination" type="text" placeholder="Destination">
-        <input id="startDate" type="date" placeholder="Start Date">
-        <input id="endDate" type="date" placeholder="End Date">
-        <input id="pax" type="number" placeholder="Pax">
-        <button class="go-button" id="goButton">GO!</button>
-    </div>
+  <h2>Flight Search</h2>
+  <form id="flightSearchForm">
+    <label for="originCode">Origin Code:</label>
+    <input type="text" id="originCode" name="originCode" required>
+    <label for="destinationCode">Destination Code:</label>
+    <input type="text" id="destinationCode" name="destinationCode" required>
+    <label for="dateOfDeparture">Departure Date:</label>
+    <input type="date" id="dateOfDeparture" name="dateOfDeparture" required>
+    <button type="submit">Search Flights</button>
+  </form>
+  
+  <div id="flightSearchResults">
+    <!-- Flight search results will be displayed here -->
+  </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="app.js"></script>
 
-    <div class="flight-prices" id="flightPrices">
-        <!-- Flight prices will be populated here using JavaScript -->
-    </div>
-
-    <script src="../routes/script.js"></script>
 </body>
 </html>

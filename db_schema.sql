@@ -41,5 +41,18 @@ CREATE TABLE IF NOT EXISTS attractionDetails (
 );  
   
 
+CREATE TABLE IF NOT EXISTS flightDetails (
+  flight_id INTEGER PRIMARY KEY AUTOINCREMENT,
+  origin TEXT NOT NULL,
+  destination TEXT NOT NULL,
+  duration TEXT,
+  price INT ,
+  travel_path TEXT,
+  user_id INT,
+  FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+
+
 COMMIT;
 

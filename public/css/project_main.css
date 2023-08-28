@@ -467,4 +467,15 @@ hr {
     padding: 10px;
     position: absolute;
 }
+.back-button {
+    background-color: #823b17;
+    color: white;
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 10px;
+    height: 40px;
+    padding: 10px;
+    position: absolute;
+    top: 120px;
+}
 

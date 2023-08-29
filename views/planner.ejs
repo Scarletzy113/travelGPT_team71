@@ -36,12 +36,13 @@
 </head>
 
 
-<body>
-<a class="go-planner-button" href="/recommendations/search">Recommendations</a>
+<body div class="planner-body">
+
     <div class="container">
+      <a class="go-planner-button" href="/recommendations/search" style="background-color:white;color:black">Recommendations</a>
         <label for="maxDaysInput">Set Maximum Days: </label>
         <input type="number" id="maxDaysInput" min="1" value="<%= maxDays %>">
-        <button onclick="updateMaxDays()">Update</button>
+        <button onclick="updateMaxDays()" style="background-color:white">Update</button>
     </div>
     <div class="recommendationBodyBox">
         <% for (const [day, attractions] of Object.entries(attractionsByDay)) { %>
@@ -65,6 +66,7 @@
             </div>
         <% } %>
     </div>
+    <div class="planner-text"> Kelly Sikkema/Unsplash</div>
 </body>
 
 </html>

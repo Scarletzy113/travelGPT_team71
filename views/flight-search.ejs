@@ -16,9 +16,34 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
     />
     
+    <link rel="stylesheet" href="/css/project_main.css" type="text/css"/>
+    <div style="background-color:black">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-body" data-bs-theme="dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">
+            <div class="logo">TravelGPT</div>
+          </a>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="/login">Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/signup">Sign up</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+
   </head>
-  <body>
+  <body div class="flight-search-body">
     <div class="container-sm">
+      <form method="GET" action="/hotel/search">
+        <button class="hotelFlightButton" role="button">Go To Hotels</button>
+      </form>
+      <p class="fs-2" style="color:white">FLIGHT SEARCH: </p>
       <div class="my-2 card">
         <div class="card-body">
           <h5 class="card-title">Locations</h5>
@@ -211,7 +236,7 @@
           </div>
         </div>
       </div>
-      <button id="search-button" class="w-100 btn btn-primary">Search</button>
+      <button id="search-button" style="background-color:white;color:black" class="w-100 btn btn-primary">Search</button>
       <div class="border-bottom mb-4 pt-4" id="search-results-separator"></div>
       <div class="d-flex justify-content-center" id="search-results-loader">
         <div class="spinner-border" role="status">
@@ -221,5 +246,6 @@
       <ul class="list-group mb-4" id="search-results"></ul>
     </div>
     <script src="/flight/app.js"></script>
+    <div class="flight-search-text"> Erik Odiin/Unsplash</div>
   </body>
 </html>

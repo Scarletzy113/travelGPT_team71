@@ -26,10 +26,10 @@
       </nav>
     </div>
 </head>
-<body>
-  <a class="go-planner-button" href="/planner">Go to planner</a>
-  <a class="back-recommendations-button" href="/recommendations/search">Recommendations</a>
+<body div class="saved-attractions-body">
   <div class="savedBodyBox">
+    <a class="go-planner-button" href="/planner">Go to planner</a>
+    <a class="back-recommendations-button" href="/recommendations/search">Recommendations</a>
     <h2 style="text-align:center">Saved Attractions</h2>
     <div class="containerAttractBox">
       <% savedAttractions.forEach((attraction) => { %>
@@ -55,6 +55,7 @@
       <% }) %>
     </div>
   </div>
+  <div class="saved-attractions-text"> Aubrey Odom/Unsplash</div>
 
 </body>
 </html> 

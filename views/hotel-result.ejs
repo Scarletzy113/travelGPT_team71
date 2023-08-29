@@ -26,8 +26,8 @@
       </div>
     
 </head>
-<body>
-    
+<body div class="hotel-result-body">
+  
 
     <div class="search-bar">
         <input id="origin" type="text" placeholder="Country of Origin">
@@ -43,7 +43,7 @@
           <!-- Flight prices will be populated here using JavaScript -->
           <% hotels.forEach((hotel) => { %>
           <div class="hotel-card">
-            <div class="hotelResultRow">
+            <div class="hotelResultRow" style="background-color:white">
                 <h2><%= hotel.name %></h2>
                 <p>Rating: <%= hotel.rating %> / 5</p>
                 <p>Price: <%= hotel.price %></p>
@@ -58,6 +58,7 @@
         <% }); %>
       </div>
     </div>
+    <div class="hotel-result-text"> Alex Cheung/Unsplash</div>
     <form method ="get" action="/recommendations/search">
       <button class="go-button" id="goButton"> Recommendations</button>
     </form>

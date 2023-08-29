@@ -75,6 +75,10 @@
     margin: 0 10px;
 }
 
+.nav-link {
+    color: white;
+}
+
 #goButton {
     color:black;
     background-color: white;
@@ -88,20 +92,46 @@
 
 /********************************************* FLIGHT & HOTEL SEARCH PAGE PROPERTIES *******************************************/
 .flightBodyBox {
-    background-color: lightgrey;
+    background-color: white;
     border: 5px solid black;
     padding: 10px;
     width: 70%;
     margin: auto;
 }
 
+.flight-search-body {
+    background-image: url('img/airport-search.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+}
+
+.flight-search-text {
+    bottom: 8px;
+    right: 16px;
+    color: white;
+}
+
+.hotel-search-body {
+    background-image: url('img/hotel-search.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+}
+
+.hotel-search-text {
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+    color: white;
+}
+
 .hotelFlightButton {
-    background-color: lightblue;
+    background-color: white;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     width: 25%;
-    border-radius: 50%;
 }
 
 .hotelFlightButton:hover {
@@ -139,12 +169,12 @@
     grid-template-columns: auto auto auto auto auto auto auto auto auto;
     grid-template-rows: 80px 20px 80px;
     gap: 10px;
-    background-color: lightgrey;
+    background-color: white;
     padding: 10px;
 }
 
 .grid-container > div {
-    background-color: lightgrey;
+    background-color: white;
     text-align: center;
     font-size: 30px;
 }
@@ -240,9 +270,24 @@ body {
     padding: 0;
 }
 
+.hotel-result-body {
+    background-image: url('img/hotel-result.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+}
+
+.hotel-result-text {
+    
+    bottom: 8px;
+    right: 16px;
+    color: white;
+}
+
 .logo {
     font-weight: bold;
     font-size: 24px;
+    color: white;
 }
 
 .buttons button {
@@ -291,6 +336,46 @@ input, button {
     padding: 10px;
     width: 70%;
     margin: auto;
+}
+
+.recommendations-search-body {
+    background-image: url('img/recommendations-search.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+}
+
+.recommendations-search-text {
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+    color: white;
+}
+
+.recommendations-body {
+    background-image: url('img/recommendations-result.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+}
+
+.recommendations-text {
+    bottom: 8px;
+    left: 16px;
+    color: white;
+}
+
+.planner-body {
+    background-image: url('img/planner.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+}
+
+.planner-text {
+    bottom: 8px;
+    right: 16px;
+    color: white;
 }
 
 hr {
@@ -353,13 +438,54 @@ hr {
 
 
 
-/********************************************* SAVED ATTRACTIONS & HOTEL PAGE PROPERTIES *******************************************/
+/********************************************* SAVED ATTRACTIONS, HOTEL & FLIGHT PAGE PROPERTIES *******************************************/
 .savedBodyBox {
     background-color: white;
     border: 3px solid grey;
     padding: 10px;
     width: 80%;
     margin: auto;
+}
+
+.saved-hotel-body {
+    background-image: url('img/saved-hotel.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+}
+
+.saved-hotel-text {
+    bottom: 8px;
+    right: 16px;
+    color: white;
+}
+
+.saved-flights-body {
+    background-image: url('img/saved-flights.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+}
+
+.saved-flights-text {
+    bottom: 8px;
+    right: 16px;
+    color: white;
+}
+
+.saved-attractions-body {
+    background-image: url('img/saved-attractions.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    
+}
+
+.saved-attractions-text {
+    
+    bottom: 8px;
+    right: 16px;
+    color: white;
 }
 
 .containerHotelBox {
@@ -375,7 +501,7 @@ hr {
     border: 1px solid black;
     text-align: center;
     font-size: 25px;
-    height: 180px;
+    height: 300px;
     border-radius: 20px;
 }
 
@@ -427,7 +553,6 @@ hr {
     border-radius: 10px;
     height: 44px;
     padding: 10px;
-    position: absolute;
 }
 
 .back-recommendations-button {
@@ -438,7 +563,6 @@ hr {
     border-radius: 10px;
     height: 44px;
     padding: 10px;
-    position: absolute;
     top: 110px;
 }
 
@@ -465,7 +589,6 @@ hr {
     border-radius: 10px;
     height: 44px;
     padding: 10px;
-    position: absolute;
 }
 .back-button {
     background-color: #823b17;
@@ -475,7 +598,6 @@ hr {
     border-radius: 10px;
     height: 40px;
     padding: 10px;
-    position: absolute;
     top: 120px;
 }
 

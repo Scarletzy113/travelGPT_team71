@@ -601,3 +601,88 @@ hr {
     top: 120px;
 }
 
+/* Reset some default styles */
+body, h1, h2, h3, h4, p, input, button {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+/* Common styles for both pages */
+.container {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #222;
+}
+
+.link-text {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.link-text a {
+    color: #333;
+    text-decoration: none;
+}
+
+/* Specific styles for the Login page */
+.login-container {
+    background-color: #fff;
+}
+
+.login-title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+/* Specific styles for the Signup page */
+.signup-container {
+    background-color: #eee;
+}
+
+.signup-title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+

@@ -355,7 +355,7 @@ app.post("/hotel/result", requireLogin, (req, res, next) => {
         },
         headers: {
           'content-type': 'application/json',
-          'X-RapidAPI-Key': 'b519162a41msh5b10209e96c5027p107049jsn63c119b6732e',
+          'X-RapidAPI-Key': '79fbf2ce0emsh88e1a16b0cd5e89p14fc6fjsnbce37d922036',
           'X-RapidAPI-Host': 'travel-advisor.p.rapidapi.com'
         },
        
@@ -386,7 +386,7 @@ app.post("/hotel/result", requireLogin, (req, res, next) => {
                 },
                 headers: {
                   'content-type': 'application/json',
-                  'X-RapidAPI-Key': 'b519162a41msh5b10209e96c5027p107049jsn63c119b6732e',
+                  'X-RapidAPI-Key': '79fbf2ce0emsh88e1a16b0cd5e89p14fc6fjsnbce37d922036',
                   'X-RapidAPI-Host': 'travel-advisor.p.rapidapi.com'
                 },
                 data: {
@@ -493,7 +493,7 @@ app.post("/recommendations/result", requireLogin, (req, res, next) => {
         },
         headers: {
           'content-type': 'application/json',
-          'X-RapidAPI-Key': 'b519162a41msh5b10209e96c5027p107049jsn63c119b6732e',
+          'X-RapidAPI-Key': '79fbf2ce0emsh88e1a16b0cd5e89p14fc6fjsnbce37d922036',
           'X-RapidAPI-Host': 'travel-advisor.p.rapidapi.com'
         },
        
@@ -524,7 +524,7 @@ app.post("/recommendations/result", requireLogin, (req, res, next) => {
                 },
                 headers: {
                   'content-type': 'application/json',
-                  'X-RapidAPI-Key': 'b519162a41msh5b10209e96c5027p107049jsn63c119b6732e',
+                  'X-RapidAPI-Key': '79fbf2ce0emsh88e1a16b0cd5e89p14fc6fjsnbce37d922036',
                   'X-RapidAPI-Host': 'travel-advisor.p.rapidapi.com'
                 },
                 data: {

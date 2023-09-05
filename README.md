@@ -17,10 +17,8 @@
 - In the terminal type node index
 
 
-for flights test with cities that can be autocompleted and wait for the auto complete and click the auto complete
-some times the search may end up with no results
-this is due to the number of request being too many
-wait awhile and try again
-
-for hotels
-test with singapore and hong kong
+# 4. Flight search
+For flights test with cities that can be autocompleted, wait for the auto-complete, and click the auto-complete.
+Sometimes the search may end up with no results, this is due to the number of requests being too many, wait awhile and try again.
+# 5. Hotel search 
+For hotels, test with singapore and hong kong.

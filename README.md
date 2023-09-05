@@ -1,4 +1,4 @@
-# travelGPT_team71
+## travelGPT_team71
 
 # Guide to run our webpage
 

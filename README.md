@@ -1,7 +1,6 @@
-## travelGPT_team71
+# travelGPT_team71
 
-# Guide to run our webpage
-
+ Guide to run our webpage
 # 1. Install npm modules
 - express
 - express-session

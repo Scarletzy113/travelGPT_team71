@@ -3,7 +3,6 @@ Install npm modules
 - express
 - express-session
 - cookie-parser
-- node
 - ejs
 - axios
 - date-fns

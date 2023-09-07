@@ -27,6 +27,14 @@
     height: 50%;
 }
 
+.description-1 {
+    font-family: Century Gothic;
+    padding: 12px 20px;
+    text-align: center;
+    font-size: 16px;
+    background-color: white;
+}
+
 .btn-group button {
     padding: 12px 20px;
     background-color: rgb(15, 14, 14);

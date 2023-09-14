@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- import css and include bootstrap cdn -->
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -17,6 +18,7 @@
     />
     
     <link rel="stylesheet" href="/css/project_main.css" type="text/css"/>
+<!-- add navigation bar -->
     <div style="background-color:black">
       <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-body" data-bs-theme="dark">
         <div class="container-fluid">
@@ -38,12 +40,15 @@
     </div>
 
   </head>
+<!-- main page body -->
   <body div class="flight-search-body">
     <div class="container-sm">
       <form method="GET" action="/hotel/search">
+<!-- go to hotel button -->
         <button class="hotelFlightButton" style="color:black;float:left;background-color:lightgreen" role="button">Go To Hotels</button>
       </form>
       <form method="GET" action="/saved-flights">
+<!-- go to saved flights list button -->
         <button class="hotelFlightButton" style="color:black;background-color:lightcoral" role="button">Go To Saved Flights List</button>
       </form>
       <p class="fs-2" style="color:white">FLIGHT SEARCH: </p>

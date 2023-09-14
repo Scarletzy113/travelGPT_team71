@@ -80,6 +80,7 @@ app.get('/signup', (req, res) => {
   res.render('signup');
 });
 
+//Checks if sign up conditions are valid before storing the data into users table
 app.post('/signup', (req, res) => {
   const { username, email, password } = req.body;
   const sql = 'INSERT INTO users (username, email, password) VALUES (?, ?, ?)';
@@ -94,7 +95,7 @@ app.post('/signup', (req, res) => {
 });
 
 
-
+//function that requires users to login 
 function requireLogin(req, res, next) {
   if (req.session.user) {
     next();
@@ -138,7 +139,7 @@ app.post('/save-attraction', requireLogin, (req, res) => {
   const attractionImageUrl = req.body.attractionImageURL;
 
   console.log('Attempting to save attraction:', userId,attractionName,attractionRating,attractionPrice,attractionImageUrl);
-  // console.log('Attraction ID:', attractionId);
+  
 
   // Insert the saved attraction into the user-saved data table in the database
   const insertSql = 'INSERT INTO attractionDetails (user_id,attraction_name,rating,price,imageURL ) VALUES (?, ? , ? , ? , ?)';
@@ -207,11 +208,12 @@ const amadeus = new Amadeus({
   clientId: 'WGrGoO7avNljRfzckUNoAYoJWluTUjHm',
   clientSecret: 'oqhWp4htORBWGGGx',
 });
-// Your Express app setup and other code...
 
+//flight search page generation
 app.get('/flight/search', requireLogin, (req, res) => {
   res.render('flight-search');
 });
+//flight api autocomplete search
 app.get("/api/autocomplete", async (request, response) => {
   try {
     const { query } = request;
@@ -225,6 +227,8 @@ app.get("/api/autocomplete", async (request, response) => {
     response.json([]);
   }
 });
+//inspired by amadeus flight API blog HTML5 example
+//searches the flights database with the req params
 app.get("/api/search", async (request, response) => {
   try {
     const { query } = request;
@@ -246,7 +250,7 @@ app.get("/api/search", async (request, response) => {
   }
 });
 
-
+//save selected flight data
 app.post('/api/save-flight', (req, res) => {
   const { flightData } = req.body;
 
@@ -319,6 +323,7 @@ app.get('/hotel/search',requireLogin, (req, res) => {
   res.render('hotel-search');
 });
 
+//Route to get hotel search results based on req params
 app.post("/hotel/result", requireLogin, (req, res, next) => {
   const userId = req.session.user.user_id;
   const country = req.body.country;
@@ -332,10 +337,6 @@ app.post("/hotel/result", requireLogin, (req, res, next) => {
   const formattedStartDate = format(new Date(startDate), 'yyyy-MM-dd');
   const formattedEndDate = format(new Date(endDate), 'yyyy-MM-dd');
 
-  
-
-
-  
   const updateUserSql = "UPDATE users SET country = ? WHERE user_id = ?";
   const userData = [country, userId];
 
@@ -449,13 +450,13 @@ app.post("/hotel/result", requireLogin, (req, res, next) => {
   });
 });
 
-
+//Route to recommendations page
 app.get("/recommendations/search",requireLogin, (req, res) => {
   res.render('recommendations-search');
 });
 
 
-
+//Route to get recommendations results based on the req params
 app.post("/recommendations/result", requireLogin, (req, res, next) => {
   const userId = req.session.user.user_id;
   const country = req.body.country;
@@ -468,10 +469,6 @@ app.post("/recommendations/result", requireLogin, (req, res, next) => {
   // Convert the dates to the required format for the API (yyyy-mm-dd)
   const formattedStartDate = format(new Date(startDate), 'yyyy-MM-dd');
   const formattedEndDate = format(new Date(endDate), 'yyyy-MM-dd');
-
-  
-
-
   
   const updateUserSql = "UPDATE users SET country = ? WHERE user_id = ?";
   const userData = [country, userId];
@@ -582,12 +579,10 @@ app.post("/recommendations/result", requireLogin, (req, res, next) => {
 
 });
 
-
+//renders planner page
 app.get('/planner', (req, res) => {
-  const query = `
-      SELECT * FROM attractionDetails
-      ORDER BY day_of_stay, attraction_id
-  `;
+  //orders the attractions based on day of stay
+  const query = `SELECT * FROM attractionDetails ORDER BY day_of_stay, attraction_id`;
 
   db.all(query, [], (err, rows) => {
       if (err) {
@@ -622,7 +617,7 @@ app.get('/planner', (req, res) => {
   });
 });
 
-
+//changes the dates allocated to the attractions
 app.post('/allocate', (req, res) => {
   const attractionId = req.body.attraction_id;
   const selectedDay = req.body.daySelect;

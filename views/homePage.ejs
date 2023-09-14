@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- import css and include bootstrap cdn -->
     <meta name="viewport" charset="utf-8" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
@@ -9,6 +10,7 @@
   </head> 
 <body div class="home-body">
   <div style="background-color:black">
+<!-- add navgation bar -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-body" data-bs-theme="dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="/">
@@ -32,6 +34,7 @@
       </div>
     </nav>
   </div>
+<!-- website description -->
 <div class="description-1">Welcome to TravelGPT, where travel planning becomes effortless. 
   Our dedicated search system and DIY travel planner empower you to create a personalized itinerary and book your dream trip with ease.</div>
 <div class="description-1">Explore endless travel possibilities with our user-friendly search system. 
@@ -40,10 +43,12 @@
 <br>
     <div class="center">
         <div class="btn-group">
+<!-- access to flights and hotels button -->
           <form method="GET" action="/flight/search">
             <button class="leftHomeButton" role="button">Access to Flights and Hotels</button>
           </form>
           <form method="GET" action="/planner">
+<!-- access to travel planner button -->
             <button class="rightHomeButton" role="button">Access to Travel Planner</button>
           </form>
         </div>

@@ -118,7 +118,7 @@ app.get('/saved-attractions', requireLogin, (req, res) => {
       res.status(500).send('Could not retrieve saved attractions.');
     } else {
 
-              // Pass the retrieved data to the saved-attractions EJS template
+      // Pass the retrieved data to the saved-attractions EJS template
       res.render('saved-attractions',
        {
         savedAttractions: rows,
@@ -170,7 +170,7 @@ app.get('/saved-hotel', requireLogin, (req, res) => {
       res.status(500).send('Could not retrieve saved hotels.');
     } else {
 
-              // Pass the retrieved data to the saved-attractions EJS template
+      // Pass the retrieved data to the saved-attractions EJS template
       res.render('saved-hotel',
        {
         savedHotels: rows,
@@ -276,7 +276,7 @@ app.post('/api/save-flight', (req, res) => {
       INSERT INTO flightDetails (origin, destination, duration, price, travel_path, user_id)
       VALUES (?, ?, ?, ?, ?, ?)
     `;
-    // Assuming user_id is available in the session
+    // Retrieving user_id from the session
     const user_id = req.session.user.user_id;
 
     try {
@@ -303,7 +303,7 @@ app.get('/saved-flights', requireLogin, (req, res) => {
       res.status(500).send('Could not retrieve saved attractions.');
     } else {
 
-              // Pass the retrieved data to the saved-attractions EJS template
+      // Pass the retrieved data to the saved-attractions EJS template
       res.render('saved-flights',
        {
         savedFlights: rows
@@ -324,18 +324,18 @@ app.post("/hotel/result", requireLogin, (req, res, next) => {
   const country = req.body.country;
   const { format } = require('date-fns');
 
-  // Inside your POST route handler
-  const startDate = req.body.startDate; // Assuming format is dd-mm-yyyy
-  const endDate = req.body.endDate; // Assuming format is dd-mm-yyyy
+  // initiating var for the POST route handler
+  const startDate = req.body.startDate;
+  const endDate = req.body.endDate;
   
-  // Convert the dates to the required format (yyyy-mm-dd)
+  // Convert the dates to the required format for the API (yyyy-mm-dd)
   const formattedStartDate = format(new Date(startDate), 'yyyy-MM-dd');
   const formattedEndDate = format(new Date(endDate), 'yyyy-MM-dd');
 
   
 
 
-  // Corrected SQL syntax for updating user's country
+  
   const updateUserSql = "UPDATE users SET country = ? WHERE user_id = ?";
   const userData = [country, userId];
 
@@ -366,7 +366,7 @@ app.post("/hotel/result", requireLogin, (req, res, next) => {
           
           const geoID = response.data.data.Typeahead_autocomplete.results[3].detailsV2.locationId;
 
-          // Corrected SQL syntax for updating user's geoID
+          
           const updateGeoIDSql = "UPDATE users SET geoId = ? WHERE user_id = ?";
           const geoIDData = [geoID, userId];
 
@@ -414,8 +414,7 @@ app.post("/hotel/result", requireLogin, (req, res, next) => {
               };
               axios.request(options2)
               .then((response2) => {
-                // console.log(formattedStartDate);
-                // console.log(formattedEndDate);
+                
                 const sections = response2.data.data.AppPresentation_queryAppListV2[0].sections;
 
                 const hotels = [];
@@ -423,20 +422,20 @@ app.post("/hotel/result", requireLogin, (req, res, next) => {
                 for (const sectionKey in sections) {
                   const section = sections[sectionKey];
                   
-                  // Check if the section has a listSingleCardContent object
+                  // Check if the section has a listSingleCardContent object to check before pushing the hotel data
                   if (section.listSingleCardContent && typeof section.listSingleCardContent === 'object') {
                     const hotel = {
                       name: section.listSingleCardContent.cardTitle.string,
                       rating: section.listSingleCardContent.bubbleRating ? section.listSingleCardContent.bubbleRating.rating : null,
                       price: section.listSingleCardContent.commerceInfo?.priceForDisplay?.string || 0,
-                      // Add more fields as needed
+                     
                     };
                     hotels.push(hotel);
                   }
                 }
 
                 console.log(hotels);
-                // Pass the hotels array to your EJS template
+                // rendering the hotel results
                 res.render('hotel-result', { hotels });
                 })
              
@@ -450,7 +449,7 @@ app.post("/hotel/result", requireLogin, (req, res, next) => {
   });
 });
 
-// ... (Other routes and app.listen)
+
 app.get("/recommendations/search",requireLogin, (req, res) => {
   res.render('recommendations-search');
 });
@@ -462,18 +461,18 @@ app.post("/recommendations/result", requireLogin, (req, res, next) => {
   const country = req.body.country;
   const { format } = require('date-fns');
   const pax = req.body.pax;
-  // Inside your POST route handler
+   //intiating the var for the dates in the POST handler
   const startDate = req.body.startDate; // Assuming format is dd-mm-yyyy
   const endDate = req.body.endDate; // Assuming format is dd-mm-yyyy
   
-  // Convert the dates to the required format (yyyy-mm-dd)
+  // Convert the dates to the required format for the API (yyyy-mm-dd)
   const formattedStartDate = format(new Date(startDate), 'yyyy-MM-dd');
   const formattedEndDate = format(new Date(endDate), 'yyyy-MM-dd');
 
   
 
 
-  // Corrected SQL syntax for updating user's country
+  
   const updateUserSql = "UPDATE users SET country = ? WHERE user_id = ?";
   const userData = [country, userId];
 
@@ -504,7 +503,7 @@ app.post("/recommendations/result", requireLogin, (req, res, next) => {
           
           const geoID = response.data.data.Typeahead_autocomplete.results[3].detailsV2.locationId;
 
-          // Corrected SQL syntax for updating user's geoID
+          
           const updateGeoIDSql = "UPDATE users SET geoId = ? WHERE user_id = ?";
           const geoIDData = [geoID, userId];
 
@@ -545,8 +544,7 @@ app.post("/recommendations/result", requireLogin, (req, res, next) => {
               
               axios.request(options2)
               .then((response2) => {
-                // console.log(formattedStartDate);
-                // console.log(formattedEndDate);
+                
                 const sections = response2.data.data.AppPresentation_queryAppListV2[0].sections;
 
                 const recommendations = [];
@@ -554,7 +552,7 @@ app.post("/recommendations/result", requireLogin, (req, res, next) => {
                 for (const sectionKey in sections) {
                   const section = sections[sectionKey];
                   
-                  // Check if the section has a listSingleCardContent object
+                  // Check if the section has a listSingleCardContent object before pushing the recommendations data
                   if (section.listSingleCardContent && typeof section.listSingleCardContent === 'object') {
                     const recommendation = {
                       name: section.listSingleCardContent.cardTitle.string,
@@ -569,7 +567,7 @@ app.post("/recommendations/result", requireLogin, (req, res, next) => {
                 }
 
                 console.log(recommendations);
-                // Pass the hotels array to your EJS template
+                // rendering the data into recommendations page
                 res.render('recommendations', { recommendations });
                 })
              
